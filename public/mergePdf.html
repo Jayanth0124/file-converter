@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Merge Tool</title>
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #e8d7ff; /* Lavender background */
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 600px;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), -15px -15px 30px rgba(255, 255, 255, 0.7);
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #9b68e6;
+      margin-bottom: 20px;
+    }
+
+    .file-upload {
+      background-color: #e0d5ff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.6);
+    }
+
+    .file-upload input[type="file"] {
+      display: none;
+    }
+
+    .file-upload label {
+      display: block;
+      background-color: #d1c3f2;
+      border-radius: 12px;
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .file-upload label:hover {
+      background-color: #c4aad7;
+      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15), -8px -8px 20px rgba(255, 255, 255, 0.6);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background-color: #e0d5ff;
+      border-radius: 5px;
+      margin: 20px 0;
+      overflow: hidden;
+      display: none;
+    }
+
+    .progress-bar div {
+      height: 100%;
+      background-color: #9b68e6;
+      width: 0;
+      border-radius: 5px;
+    }
+
+    .file-info {
+      font-size: 1em;
+      color: #9b68e6;
+      margin-top: 10px;
+    }
+
+    footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e8d7ff;
+    padding: 15px 0;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    footer p {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2em;
+    color: #9b68e6;
+    margin: 0;
+    }
+
+    footer div {
+    margin-top: 10px;
+    text-align: center;
+    }
+
+    footer a {
+    color: #9b68e6;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.5em;
+    transition: color 0.3s;
+    }
+
+    footer a:hover {
+    color: #4e3ca9;
+    }
+
+
+    /* Custom Button Styles */
+    .custom-btn {
+      width: 150px;
+      height: 50px;
+      color: #fff;
+      border-radius: 10px;
+      margin: 15px;
+      padding: 10px 25px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 500;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+      box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+        7px 7px 20px 0px rgba(0, 0, 0, .1),
+        4px 4px 5px 0px rgba(0, 0, 0, .1);
+      outline: none;
+    }
+
+    .btn-1 {
+      background: rgb(96, 9, 240);
+      background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
+      border: none;
+    }
+
+    .btn-1:hover {
+      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+        -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+        inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+    }
+
+    #downloadBtn {
+      display: none; /* Initially hidden */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>PDF Merge Tool</h1>
+    
+    <div class="file-upload">
+      <input type="file" id="pdfInput" multiple accept=".pdf" />
+      <label for="pdfInput">Drag & Drop or Click to Upload PDF Files</label>
+    </div>
+
+    <div id="fileInfo" class="file-info">No files selected</div>
+
+    <button class="custom-btn btn-1" id="mergeBtn" onclick="mergePDFs()">Merge PDFs</button>
+
+    <div class="progress-bar" id="progressBar">
+      <div id="progress"></div>
+    </div>
+
+    <button class="custom-btn btn-1" id="downloadBtn" onclick="downloadMergedPDF()">Download PDF</button>
+  </div>
+  
+
+  <footer>
+    <p style="font-size: 1.2em; color: #9b68e6; text-align: center; margin: 0;">Connect me on</p>
+    <div style="margin-top: 10px; text-align: center;">
+      <a href="#" style="margin: 0 10px;"><i class="fab fa-github"></i></a>
+      <a href="#" style="margin: 0 10px;"><i class="fas fa-globe"></i></a>
+      <a href="#" style="margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+      <a href="#" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+  <script>
+    let pdfFiles = [];
+    let mergedPdfBlob = null;
+    const mergeBtn = document.getElementById('mergeBtn');
+    const progressBar = document.getElementById('progressBar');
+    const progressDiv = document.getElementById('progress');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const fileInfo = document.getElementById('fileInfo');
+
+    document.getElementById('pdfInput').addEventListener('change', (e) => {
+      pdfFiles = e.target.files;
+      fileInfo.textContent = `${pdfFiles.length} file(s) selected`;
+    });
+
+    async function mergePDFs() {
+      if (pdfFiles.length === 0) return;
+
+      mergeBtn.disabled = true;
+      progressBar.style.display = 'block';
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        progressDiv.style.width = `${progress}%`;
+        if (progress >= 100) {
+          clearInterval(interval);
+          progressBar.style.display = 'none';
+          downloadBtn.style.display = 'inline-block';
+        }
+      }, 500);
+
+      const { PDFDocument } = PDFLib;
+      const mergedPdf = await PDFDocument.create();
+
+      for (const file of pdfFiles) {
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+        await new Promise(resolve => reader.onload = resolve);
+        const pdfBytes = reader.result;
+        const pdf = await PDFDocument.load(pdfBytes);
+        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        copiedPages.forEach(page => mergedPdf.addPage(page));
+      }
+
+      const mergedPdfBytes = await mergedPdf.save();
+      mergedPdfBlob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
+    }
+
+    function downloadMergedPDF() {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(mergedPdfBlob);
+      link.download = 'merged.pdf';
+      link.click();
+    }
+  </script>
+
+</body>
+</html>

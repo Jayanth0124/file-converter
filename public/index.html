@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Converter</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>File Converter</h1>
+        </header>
+
+        <!-- Cards Section -->
+        <main class="card-container">
+            <div class="card">
+                <h2>Images to PDF</h2>
+                <p>Convert multiple images into a single PDF.</p>
+                <button onclick="redirectTo('imagesToPdf.html')">Go</button>
+            </div>
+            <div class="card">
+                <h2>PDF to Images</h2>
+                <p>Extract images from PDF files.</p>
+                <button onclick="redirectTo('pdfToImages.html')">Go</button>
+            </div>
+            <div class="card">
+                <h2>Merge PDF</h2>
+                <p>Combine multiple PDF files into one.</p>
+                <button onclick="redirectTo('mergePdf.html')">Go</button>
+            </div>
+            <div class="card">
+                <h2>Image to Image</h2>
+                <p>Convert image formats (e.g., PNG to JPG).</p>
+                <button onclick="redirectTo('image-to-image.html')">Go</button>
+            </div>
+        </main>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>About File Converter</h2>
+            <p>
+                File Converter offers powerful tools to make your file conversion seamless. 
+                Whether you're managing PDFs or images, this tool is designed to simplify 
+                your tasks with efficiency and reliability.
+            </p>
+        </section>
+
+        <!-- Footer Section -->
+        <footer class="footer-container">
+            <div class="footer-content">
+                <p> Follow Me On Social Media</p>
+                <div class="social-icons">
+                    <a href="#" class="social"><i class="bx bxl-facebook"></i></a>
+                    <a href="#" class="social"><i class="bx bxl-twitter"></i></a>
+                    <a href="#" class="social"><i class="bx bxl-instagram"></i></a>
+                    <a href="#" class="social"><i class="bx bxl-linkedin"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function redirectTo(page) {
+            window.location.href = page; // Redirects to the specified page
+        }
+    </script>
+</body>
+</html>
