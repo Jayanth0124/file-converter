@@ -18,7 +18,7 @@
             padding-bottom: 50px;
             box-sizing: border-box;
         }
-
+    
         .container {
             width: 90%;
             max-width: 600px;
@@ -28,8 +28,9 @@
             box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 0.7);
             text-align: center;
             margin: 20px;
+            box-sizing: border-box;
         }
-
+    
         .form {
             background-color: #fff;
             border-radius: 15px;
@@ -37,13 +38,13 @@
             box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2), -10px -10px 20px rgba(255, 255, 255, 0.4);
             font-size: 1.125rem;
         }
-
+    
         .form-title {
             font-size: 1.8rem;
             font-weight: 500;
             color: #333;
         }
-
+    
         .drop-container {
             background-color: #fff;
             position: relative;
@@ -61,12 +62,12 @@
             transition: background .2s ease-in-out, border .2s ease-in-out;
             box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.1), inset -4px -4px 6px rgba(255, 255, 255, 0.7);
         }
-
+    
         .drop-container:hover {
             background: rgba(0, 140, 255, 0.164);
             border-color: rgba(17, 17, 17, 0.616);
         }
-
+    
         #file-input {
             width: 100%;
             max-width: 350px;
@@ -76,7 +77,7 @@
             border-radius: 10px;
             border: 1px solid rgba(8, 8, 8, 0.288);
         }
-
+    
         #file-input::file-selector-button {
             margin-right: 20px;
             border: none;
@@ -87,11 +88,11 @@
             cursor: pointer;
             transition: background .2s ease-in-out;
         }
-
+    
         #file-input::file-selector-button:hover {
             background: #0d45a5;
         }
-
+    
         .custom-btn {
             width: 130px;
             height: 40px;
@@ -110,27 +111,27 @@
                         4px 4px 5px 0px rgba(0, 0, 0, 0.1);
             outline: none;
         }
-
+    
         .btn-1 {
             background: rgb(96, 9, 240);
             background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
             border: none;
         }
-
+    
         .btn-1:hover {
             box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
                         -4px -4px 6px 0 rgba(116, 125, 136, 0.5),
                         inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
                         inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
         }
-
+    
         .button-container {
             display: flex;
             gap: 10px;
             justify-content: center;
             margin-top: 20px;
         }
-
+    
         .progress-container {
             width: 100%;
             background-color: #f3f3f3;
@@ -140,7 +141,7 @@
             display: none;
             position: relative;
         }
-
+    
         .progress-bar {
             height: 100%;
             background-color: #4caf50;
@@ -151,19 +152,19 @@
             width: 0;
             transition: width 0.5s ease;
         }
-
+    
         footer {
             background-color: #e0e5ec;
             padding: 5px 20px;
             text-align: center;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
             font-size: 12px;
             border-radius: 20px;
             box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.1), -6px -6px 15px rgba(255, 255, 255, 0.7);
         }
-
+    
         .social-icons a {
             font-size: 20px;
             color: #17795e;
@@ -171,61 +172,70 @@
             margin: 5px;
             transition: color 0.3s;
         }
-
+    
         .social-icons a:hover {
             color: #084cdf;
         }
-
+    
         @media (max-width: 768px) {
+            body {
+                padding: 0 10px; /* Added padding to prevent touching the edges */
+            }
+    
             .container {
                 width: 95%;
                 padding: 20px;
             }
-
+    
             .form-title {
                 font-size: 1.6rem;
             }
-
+    
             #file-input {
                 width: 100%;
             }
-
+    
             .custom-btn {
                 width: 100%;
                 padding: 12px;
             }
-
+    
             .button-container {
                 flex-direction: column;
                 gap: 15px;
             }
         }
-
+    
         @media (max-width: 480px) {
+            body {
+                padding: 0 10px; /* Added padding to prevent touching the edges */
+            }
+    
             .container {
                 width: 100%;
                 padding: 15px;
             }
-
+    
             .form-title {
                 font-size: 1.4rem;
             }
-
+    
             #file-input {
                 width: 100%;
             }
-
+    
             .custom-btn {
                 width: 100%;
                 padding: 15px;
             }
-
+    
             .button-container {
                 flex-direction: column;
                 gap: 20px;
             }
         }
     </style>
+    
 </head>
 <body>
 

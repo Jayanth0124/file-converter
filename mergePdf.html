@@ -8,156 +8,226 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #e8d7ff; /* Lavender background */
-      color: #333;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+        font-family: 'Arial', sans-serif;
+        background-color: #e8d7ff; /* Lavender background */
+        color: #333;
+        margin: 0;
+        padding: 20px; /* Add padding to body to create gap from edges */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-sizing: border-box; /* Ensure padding doesn't affect layout */
     }
 
     .container {
-      width: 80%;
-      max-width: 600px;
-      background-color: #ffffff;
-      border-radius: 20px;
-      box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), -15px -15px 30px rgba(255, 255, 255, 0.7);
-      padding: 40px;
-      text-align: center;
+        width: 100%;
+        max-width: 600px;
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.1), -15px -15px 30px rgba(255, 255, 255, 0.7);
+        padding: 40px;
+        text-align: center;
+        box-sizing: border-box;
     }
 
     h1 {
-      font-size: 2.5em;
-      color: #9b68e6;
-      margin-bottom: 20px;
+        font-size: 2.5em;
+        color: #9b68e6;
+        margin-bottom: 20px;
     }
 
     .file-upload {
-      background-color: #e0d5ff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.6);
+        background-color: #e0d5ff;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.15), -8px -8px 16px rgba(255, 255, 255, 0.6);
     }
 
     .file-upload input[type="file"] {
-      display: none;
+        display: none;
     }
 
     .file-upload label {
-      display: block;
-      background-color: #d1c3f2;
-      border-radius: 12px;
-      padding: 15px;
-      cursor: pointer;
-      transition: 0.3s;
+        display: block;
+        background-color: #d1c3f2;
+        border-radius: 12px;
+        padding: 15px;
+        cursor: pointer;
+        transition: 0.3s;
     }
 
     .file-upload label:hover {
-      background-color: #c4aad7;
-      box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15), -8px -8px 20px rgba(255, 255, 255, 0.6);
+        background-color: #c4aad7;
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.15), -8px -8px 20px rgba(255, 255, 255, 0.6);
     }
 
     .progress-bar {
-      width: 100%;
-      height: 10px;
-      background-color: #e0d5ff;
-      border-radius: 5px;
-      margin: 20px 0;
-      overflow: hidden;
-      display: none;
+        width: 100%;
+        height: 10px;
+        background-color: #e0d5ff;
+        border-radius: 5px;
+        margin: 20px 0;
+        overflow: hidden;
+        display: none;
     }
 
     .progress-bar div {
-      height: 100%;
-      background-color: #9b68e6;
-      width: 0;
-      border-radius: 5px;
+        height: 100%;
+        background-color: #9b68e6;
+        width: 0;
+        border-radius: 5px;
     }
 
     .file-info {
-      font-size: 1em;
-      color: #9b68e6;
-      margin-top: 10px;
+        font-size: 1em;
+        color: #9b68e6;
+        margin-top: 10px;
     }
 
     footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #e8d7ff;
-    padding: 15px 0;
-    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #e8d7ff;
+        padding: 15px 0;
+        box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
     }
 
     footer p {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.2em;
-    color: #9b68e6;
-    margin: 0;
+        font-family: 'Arial', sans-serif;
+        font-size: 1.2em;
+        color: #9b68e6;
+        margin: 0;
     }
 
     footer div {
-    margin-top: 10px;
-    text-align: center;
+        margin-top: 10px;
+        text-align: center;
     }
 
     footer a {
-    color: #9b68e6;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.5em;
-    transition: color 0.3s;
+        color: #9b68e6;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 1.5em;
+        transition: color 0.3s;
     }
 
     footer a:hover {
-    color: #4e3ca9;
+        color: #4e3ca9;
     }
-
 
     /* Custom Button Styles */
     .custom-btn {
-      width: 150px;
-      height: 50px;
-      color: #fff;
-      border-radius: 10px;
-      margin: 15px;
-      padding: 10px 25px;
-      font-family: 'Lato', sans-serif;
-      font-weight: 500;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      display: inline-block;
-      box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
-        7px 7px 20px 0px rgba(0, 0, 0, .1),
-        4px 4px 5px 0px rgba(0, 0, 0, .1);
-      outline: none;
+        width: 150px;
+        height: 50px;
+        color: #fff;
+        border-radius: 10px;
+        margin: 15px;
+        padding: 10px 25px;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5),
+            7px 7px 20px 0px rgba(0, 0, 0, .1),
+            4px 4px 5px 0px rgba(0, 0, 0, .1);
+        outline: none;
     }
 
     .btn-1 {
-      background: rgb(96, 9, 240);
-      background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
-      border: none;
+        background: rgb(96, 9, 240);
+        background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, rgba(129, 5, 240, 1) 100%);
+        border: none;
     }
 
     .btn-1:hover {
-      box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
-        -4px -4px 6px 0 rgba(116, 125, 136, .5), 
-        inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
-        inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+        box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5),
+            -4px -4px 6px 0 rgba(116, 125, 136, .5),
+            inset -4px -4px 6px 0 rgba(255, 255, 255, .2),
+            inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
     }
 
     #downloadBtn {
-      display: none; /* Initially hidden */
+        display: none; /* Initially hidden */
     }
-  </style>
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        body {
+            padding: 20px; /* Add padding on smaller screens */
+        }
+
+        .container {
+            width: 90%; /* Adjust container width for tablets */
+            padding: 20px;
+            margin: 20px auto; /* Center the container and provide some gap */
+        }
+
+        h1 {
+            font-size: 2em; /* Adjust font size for smaller screens */
+        }
+
+        .file-upload label {
+            padding: 12px; /* Reduce padding for smaller screens */
+        }
+
+        .custom-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        footer a {
+            font-size: 1.3em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 10px; /* Reduce padding further for very small screens */
+        }
+
+        .container {
+            width: 95%; /* Further reduce container width for small screens */
+            padding: 15px;
+            margin: 10px auto; /* Add smaller margin */
+        }
+
+        h1 {
+            font-size: 1.8em; /* Further adjust font size */
+        }
+
+        .file-upload label {
+            padding: 10px; /* Reduce padding more for very small screens */
+        }
+
+        .custom-btn {
+            width: 100%;
+            padding: 15px;
+        }
+
+        footer p {
+            font-size: 1em;
+        }
+
+        footer a {
+            font-size: 1.2em;
+        }
+    }
+</style>
+
 </head>
 <body>
 

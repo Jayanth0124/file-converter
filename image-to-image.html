@@ -7,33 +7,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Styling remains the same */
+/* General Styling */
         body {
             font-family: Arial, sans-serif;
             background: #1e293b;
             color: #ffffff;
             margin: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
             flex-direction: column;
             height: 100vh;
-            padding: 10px;
+            padding: 0 15px; /* Add padding to avoid touching edges */
+            box-sizing: border-box;
         }
 
+        /* Container */
         .container {
             background: #2d3748;
             padding: 20px;
             border-radius: 15px;
             box-shadow: 8px 8px 15px #121926, -8px -8px 15px #3e4c63;
             width: 100%;
-            max-width: 450px;
-            margin-bottom: 20px; /* To create gap between container and footer */
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+            max-width: 450px; /* Keeps container centered and of a fixed size */
+            margin-bottom: 20px; /* Create space below the container */
+            box-sizing: border-box;
         }
 
         /* Upload Area */
@@ -152,13 +150,15 @@
             background: #374151;
             color: #ffffff;
             padding: 10px 0;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             text-align: center;
             box-shadow: 8px 8px 15px #121926, -8px -8px 15px #3e4c63;
             border-radius: 15px;
+            z-index: 10;
         }
 
+        /* Social Icons in Footer */
         footer .social-icons {
             display: flex;
             justify-content: center;
@@ -177,6 +177,16 @@
 
         /* Responsive Design */
         @media (max-width: 480px) {
+            body {
+                padding: 0 10px; /* Add extra padding on smaller screens */
+            }
+
+            .container {
+                padding: 15px;
+                margin: 10px auto; /* Center the container with margin */
+                max-width: 100%; /* Ensure container takes up more width on mobile */
+            }
+
             h2 {
                 font-size: 1.2rem;
             }
@@ -196,15 +206,20 @@
 
             .quality-button {
                 padding: 8px 10px;
-                width: 45%; /* Adjusted width for mobile */
+                width: 45%; /* Adjust width for mobile */
             }
 
-            .container {
-                padding: 15px;
-                margin: 10px; /* Added gap for small screens */
-                max-width: 90%; /* Ensure some gap around container */
+            footer {
+                padding: 10px; /* Adjust padding in footer for smaller screens */
             }
         }
+
+        h2 {
+    text-align: center; /* Center the title horizontally */
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+        }
+
     </style>
 </head>
 <body>

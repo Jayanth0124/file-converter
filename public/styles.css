@@ -132,3 +132,53 @@ header h1 {
     font-size: 1.5rem;
     text-decoration: none;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+      font-size: 2.5rem;
+      padding: 10px;
+    }
+  
+    .card-container {
+      grid-template-columns: 1fr; /* Single column layout */
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .card {
+      padding: 15px;
+    }
+  
+    .about {
+      padding: 10px 20px;
+    }
+  
+    .footer-container {
+      padding: 10px;
+    }
+  
+    .social {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2rem;
+    }
+  
+    .card h2 {
+      font-size: 1.5rem;
+    }
+  
+    .card button {
+      padding: 8px 20px;
+      font-size: 0.9rem;
+    }
+  
+    .footer-content p {
+      font-size: 0.9rem;
+    }
+  }
+  
